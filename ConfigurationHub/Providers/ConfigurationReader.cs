@@ -42,7 +42,7 @@ namespace ConfigurationHub.Providers
                 return default;
             }
 
-            if (TypeConversionHelper.IsConversionPossible(key, typeof(T)) is false)
+            if (TypeConversionHelper.IsConversionPossible(configurationItem.Value, typeof(T)) is false)
             {
                 throw new InvalidOperationException($"The value for key '{key}' cannot be converted to type {typeof(T).Name}.");
             }
