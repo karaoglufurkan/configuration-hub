@@ -50,11 +50,6 @@ namespace ConfigurationHub.Providers
             return (T)Convert.ChangeType(configurationItem.Value, typeof(T));
         }
 
-        public ConfigurationItemModel GetValue(string key)
-        {
-            return _configuration.Items.FirstOrDefault(x => x.Key == key);
-        }
-
         public List<ConfigurationItemModel> GetApplicationConfigurations()
         {
             return _configuration.Items.Where(x => x.IsActive).ToList();
