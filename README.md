@@ -50,7 +50,7 @@ To get the demo project up and running locally, follow these steps:
 2. Run the following command in your terminal:
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 3. Once the setup completes, access the demo project's Swagger UI to interact with the API:
