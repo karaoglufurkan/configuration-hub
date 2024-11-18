@@ -200,12 +200,17 @@ namespace ConfigurationHub.Providers
 
         private async Task<bool> AcquireLock()
         {
-            return await _database.StringSetAsync(SetLockKey, "locked", TimeSpan.FromSeconds(10), When.NotExists);
+            return await _database.StringSetAsync(GetApplicationUniqueLockKey(), "locked", TimeSpan.FromSeconds(10), When.NotExists);
         }
 
         private async Task ReleaseLock()
         {
-            await _database.KeyDeleteAsync(SetLockKey);
+            await _database.KeyDeleteAsync(GetApplicationUniqueLockKey());
+        }
+
+        private string GetApplicationUniqueLockKey()
+        {
+            return $"{SetLockKey}:{_applicationName}";
         }
     }
 }
